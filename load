@@ -3,13 +3,15 @@
 root=/9ecbf/config
 endpoint=https://raw.githubusercontent.com/Tuanm/.config/master
 
-[[ ! -d $root ]] && sudo mkdir -p $root
+[[ ! -d $root ]] && sudo mkdir -p $root && \
+    echo "$root created"
 
 sudo curl -o $root/_ -s $endpoint/config/_
 
 configs=$@
-for config in "$configs"; do
-    sudo curl -o $root/$config.conf -s $endpoint/config/$config.conf
+for config in $configs; do
+    sudo curl -o $root/$config.conf -s $endpoint/config/$config.conf && \
+        echo "$config.conf added"
 done
 
 added_script="\nsource $root/_\n"
