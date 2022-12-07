@@ -14,11 +14,11 @@ for config in $configs; do
         echo "$config.conf added"
 done
 
-added_script="\nsource $root/_\n"
+added_script="source $root/_"
 profile=/home/$USER/.bashrc
 script_added=$(cat $profile | grep -c "$added_script")
 if [ $script_added -eq 0 ]; then
-    sudo echo -e $added_script>> $profile
+    sudo echo -e "\n$added_script\n">> $profile
 fi
 
 source $profile
