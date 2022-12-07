@@ -1,7 +1,7 @@
 #!/bin/bash
 
 set root=/9ecbf/config
-set endpoint=https://github.com/Tuanm/.config/blob/master
+set endpoint=https://raw.githubusercontent.com/Tuanm/.config/master
 
 [[ ! -d $root ]] && mkdir -p $root
 
