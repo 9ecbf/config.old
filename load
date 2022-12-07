@@ -1,0 +1,22 @@
+#!/bin/bash
+
+set root=/9ecbf/config
+set endpoint=https://github.com/Tuanm/.config/tree/master
+
+[[ ! -d $root ]] && mkdir -p $root
+
+curl -o $root/_ -s $endpoint/config/_
+
+set configs=$@
+for config in "$configs"; do
+    curl -o $root/$config.conf -s $endpoint/config/$config.conf
+done
+
+set added_script="source $root/_"
+set profile=~/.bashrc
+set script_added=$(cat $profile | grep -c "$added_script")
+if [ $script_added -eq 0 ]; then
+    echo $added_script>> $profile
+fi
+
+source $profile

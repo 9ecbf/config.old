@@ -1,0 +1,17 @@
+#!/bin/bash
+
+export CONFIG_ROOT=/9ecbf/config
+export PATH=$PATH:$CONFIG_ROOT
+
+declare -a configs=("java" "go" "code" "git" "docker" "kafka", "nvm")
+
+for config in ${configs[@]}; do
+    conf=$CONFIG_ROOT/$config.conf
+    [[ -f $conf ]] && source $conf &> /dev/null
+done
+
+unset configs
+
+
+# For WSL only
+[[ "$PWD" == "/mnt"*  ]] && cd ~
