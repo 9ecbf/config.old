@@ -13,7 +13,7 @@ for config in "$configs"; do
 done
 
 added_script="\nsource $root/_\n"
-profile=$USER/.bashrc
+profile=/home/$USER/.bashrc
 script_added=$(cat $profile | grep -c "$added_script")
 if [ $script_added -eq 0 ]; then
     sudo echo -e $added_script>> $profile
