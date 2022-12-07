@@ -3,7 +3,7 @@
 export CONFIG_ROOT=/9ecbf/config
 export PATH=$PATH:$CONFIG_ROOT
 
-declare -a configs=("java" "go" "code" "git" "docker" "kafka", "nvm")
+declare -a configs=("profile" "java" "go" "code" "git" "docker" "kafka", "nvm")
 
 for config in ${configs[@]}; do
     conf=$CONFIG_ROOT/$config.conf
