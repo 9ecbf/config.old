@@ -12,11 +12,11 @@ for config in "$configs"; do
     sudo curl -o $root/$config.conf -s $endpoint/config/$config.conf
 done
 
-added_script="source $root/_"
-profile=~/.bashrc
+added_script="\nsource $root/_\n"
+profile=$USER/.bashrc
 script_added=$(cat $profile | grep -c "$added_script")
 if [ $script_added -eq 0 ]; then
-    sudo echo $added_script>> $profile
+    sudo echo -e $added_script>> $profile
 fi
 
 source $profile
