@@ -1,14 +1,14 @@
 #!/bin/bash
 
-id=9ecbf/config
-endpoint=https://raw.githubusercontent.com/$id/master
+endpoint=https://raw.githubusercontent.com/9ecbf/config/master/.config
+echo "Loading configurations from $endpoint..."
 
-root=/$id
+root=/9ecbf/config
 [ ! -z $CONFIG_ROOT ] && root=$CONFIG_ROOT
 [[ ! -d $root ]] && sudo mkdir -p $root && \
     echo "Directory $root created."
 
-sudo curl -o $root/_ -s $endpoint/config/_ && \
+sudo curl -o $root/_ -s $endpoint/_ && \
     sudo sed "3 i export CONFIG_ROOT=$root" $root/_ > $root/_.tmp && \
     sudo mv $root/_.tmp $root/_
 
@@ -16,7 +16,7 @@ configured=
 configs=$@
 for config in $configs; do
     [ ! -z "$configured" ] && configured="$configured "
-    sudo curl -o $root/$config.conf -s $endpoint/config/$config.conf && \
+    sudo curl -o $root/$config.conf -s $endpoint/$config.conf && \
         configured="$configured\"$config\"" && \
         echo "File $config.conf added."
 done
