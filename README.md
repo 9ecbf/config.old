@@ -23,7 +23,10 @@ $ source ~/.bashrc
 ```
 
 _Note:_
-The $CONFIG_HOST is where you can fetch the scripts. You can use `https://raw.githubusercontent.com/9ecbf/config/master` (this repository), or use `https://config.tuanm.dev` for short.
+The `$CONFIG_HOST` is where you can fetch the scripts. You can use `https://raw.githubusercontent.com/9ecbf/config/master` (this repository), or use `https://config.tuanm.dev` for short. You should set it as an environment variable before running the commands for more convenience:
+```
+$ export $CONFIG_HOST=https://config.tuanm.dev
+```
 
 
 **Hope you enjoy the scripts. Use them at your own risk!**
