@@ -9,7 +9,7 @@ root=/$id
     echo "Directory $root created."
 
 sudo curl -o $root/_ -s $endpoint/config/_ && \
-    sed "3 s/.*/export CONFIG_ROOT=$root/" $root/_
+    sed "3 i export CONFIG_ROOT=$root" $root/_
 
 configured=
 configs=$@
