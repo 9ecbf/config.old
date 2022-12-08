@@ -1,8 +1,5 @@
 #!/bin/bash
 
-export CONFIG_ROOT=/9ecbf/config
-export PATH=$PATH:$CONFIG_ROOT
-
 declare -a configs=("profile" "java" "go" "code" "git" "docker" "kafka", "nvm")
 
 for config in ${configs[@]}; do
@@ -13,5 +10,4 @@ done
 unset configs
 
 
-# For WSL only
-[[ "$PWD" == "/mnt"*  ]] && cd ~
+[[ "$PWD" == "/mnt"*  ]] && cd ~ # WSL only
