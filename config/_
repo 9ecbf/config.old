@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# export CONFIG_ROOT=...
 # declare -a configs=(...)
 
 for config in ${configs[@]}; do
