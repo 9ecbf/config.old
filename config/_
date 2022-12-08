@@ -1,6 +1,7 @@
 #!/bin/bash
 
-declare -a configs=("profile" "java" "go" "code" "git" "docker" "kafka", "nvm")
+# export CONFIG_ROOT=...
+# declare -a configs=(...)
 
 for config in ${configs[@]}; do
     conf=$CONFIG_ROOT/$config.conf
