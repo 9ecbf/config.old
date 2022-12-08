@@ -12,7 +12,7 @@ scripts=$@
 for script in $scripts; do
     sudo curl -o $root/$script -s $endpoint/$script && \
         sudo chmod +x $root/$script && \
-        echo "Script $script installed."
+        echo "Script '$script' installed."
 done
 
 added_script="export PATH=\$PATH:$root"
