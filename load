@@ -20,7 +20,7 @@ for config in $configs; do
         configured="$configured\"$config\"" && \
         echo "File $config.conf added."
 done
-sudo sed "4 s/.*/declare -a configs=($configured)/" $root/_ > $root/_.tmp &&
+sudo sed "4 s/.*/declare -a configs=($configured)/" $root/_ > $root/_.tmp && \
     mv $root/_.tmp $root/_
 
 added_script="source $root/_"
