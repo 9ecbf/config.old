@@ -11,7 +11,7 @@ yellow='\[\e[;33m\]'
 white='\[\e[m\]'
 
 help() {
-    echo "Uploads a file to $endpoint."
+    echo "Upload a file to $endpoint."
     echo ""
     echo "Usage: upload <file>"
     echo "    file    the path of the file needs uploading"
