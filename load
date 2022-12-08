@@ -1,12 +1,15 @@
 #!/bin/bash
 
-root=/9ecbf/config
-endpoint=https://raw.githubusercontent.com/Tuanm/.config/master
+id=9ecbf/config
+endpoint=https://raw.githubusercontent.com/$id/master
 
+root=/$id
+[ ! -z $CONFIG_ROOT ] && root=$CONFIG_ROOT
 [[ ! -d $root ]] && sudo mkdir -p $root && \
     echo "$root created"
 
-sudo curl -o $root/_ -s $endpoint/config/_
+sudo curl -o $root/_ -s $endpoint/config/_ && \
+    echo -e "\nexport CONFIG_ROOT=$root" >> $root/_
 
 configs=$@
 for config in $configs; do
@@ -15,7 +18,7 @@ for config in $configs; do
 done
 
 added_script="source $root/_"
-profile=/home/$USER/.bashrc
+profile=$HOME/.bashrc
 script_added=$(cat $profile | grep -c "$added_script")
 if [ $script_added -eq 0 ]; then
     sudo echo -e "\n$added_script\n">> $profile
