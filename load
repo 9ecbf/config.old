@@ -6,15 +6,15 @@ endpoint=https://raw.githubusercontent.com/$id/master
 root=/$id
 [ ! -z $CONFIG_ROOT ] && root=$CONFIG_ROOT
 [[ ! -d $root ]] && sudo mkdir -p $root && \
-    echo "$root created"
+    echo "Directory $root created."
 
 sudo curl -o $root/_ -s $endpoint/config/_ && \
-    echo -e "\nexport CONFIG_ROOT=$root" >> $root/_
+    sed "3 i export CONFIG_ROOT=$root" $root/_
 
 configs=$@
 for config in $configs; do
     sudo curl -o $root/$config.conf -s $endpoint/config/$config.conf && \
-        echo "$config.conf added"
+        echo "File $config.conf added."
 done
 
 added_script="source $root/_"
@@ -24,4 +24,4 @@ if [ $script_added -eq 0 ]; then
     sudo echo -e "\n$added_script\n">> $profile
 fi
 
-source $profile
+source $profile && echo "Done."
