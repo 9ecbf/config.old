@@ -9,7 +9,7 @@ root=/$id
     echo "Directory $root created."
 
 sudo curl -o $root/_ -s $endpoint/config/_ && \
-    sed -n "3 s/.*/export CONFIG_ROOT=$root/" $root/_
+    sed "3 s/.*/export CONFIG_ROOT=$root/" $root/_
 
 configured=
 configs=$@
@@ -19,7 +19,7 @@ for config in $configs; do
         configured="$configured\"$config\"" && \
         echo "File $config.conf added."
 done
-sudo sed -n "4 s/.*/declare -a configs=($configured)/" $root/_
+sudo sed "4 s/.*/declare -a configs=($configured)/" $root/_
 
 added_script="source $root/_"
 profile=$HOME/.bashrc
