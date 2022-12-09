@@ -5,10 +5,10 @@
 
 endpoint=https://file.io
 
-red='\[\e[;31m\]'
-green='\[\e[;32m\]'
-yellow='\[\e[;33m\]'
-white='\[\e[m\]'
+red='\e[;31m'
+green='\e[;32m'
+yellow='\e[;33m'
+white='\e[m'
 
 help() {
     echo "Upload a file to $endpoint."
