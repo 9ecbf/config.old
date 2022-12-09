@@ -28,7 +28,9 @@ finish() {
     echo "  Link: $2"
     echo "  Expires: $3"
     echo ""
-    [ ! -z $4 ] && echo -e "${yellow}P/s: The link has been copied to your clipboard.${white}"
+    if [ ! -z $4 ]; then
+        echo -e "${yellow}P/s: The link has been copied to your clipboard.${white}"
+    fi
 }
 
 error() {
