@@ -41,7 +41,7 @@ start() {
     link=$(echo "$uploaded" | jq -r ".link")
     expires=$(echo "$uploaded" | jq -r ".expires")
     if [ ! -z $link ]; then
-        [ -L "$(which clipboard)" ] && echo "$link" | clipboard
+        [ -L "$(which clipboard)" ] && echo -n "$link" | clipboard
         finish $name $link $expires
     else
         error
