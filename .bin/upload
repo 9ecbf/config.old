@@ -5,10 +5,10 @@
 
 endpoint=https://file.io
 
-red='\[\e[;31m\]'
-green='\[\e[;32m\]'
-yellow='\[\e[;33m\]'
-white='\[\e[m\]'
+red='\e[;31m'
+green='\e[;32m'
+yellow='\e[;33m'
+white='\e[m'
 
 help() {
     echo "Upload a file to $endpoint."
@@ -28,7 +28,9 @@ finish() {
     echo "  Link: $2"
     echo "  Expires: $3"
     echo ""
-    echo -e "${yellow}P/s: The link has been copied to your clipboard.${white}"
+    if [ ! -z $4 ]; then
+        echo -e "${yellow}P/s: The link has been copied to your clipboard.${white}"
+    fi
 }
 
 error() {
@@ -40,9 +42,10 @@ start() {
     name=$(echo "$uploaded" | jq -r ".name")
     link=$(echo "$uploaded" | jq -r ".link")
     expires=$(echo "$uploaded" | jq -r ".expires")
+    copied=
     if [ ! -z $link ]; then
-        [ -L "$(which clipboard)" ] && echo "$link" | clipboard
-        finish $name $link $expires
+        [ -L "$(which clipboard)" ] && echo -n "$link" | clipboard && copied=1
+        finish $name $link $expires $copied
     else
         error
     fi
